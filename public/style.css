@@ -1,7 +1,53 @@
 body{
-  padding-top:80px;
   word-wrap:break-word;
 }
+
 img{
   height: 200px;
+}
+
+.indexPage{
+  height: 100vh;
+  width: 100vw;
+  background-image: url('img/dayWater.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.indexPage .container{
+  padding-top:80px;
+}
+
+.profilePage .container{
+  margin-left: 10px;
+  margin-bottom: 100px;
+  bottom: 0;
+  position: absolute;
+  left: 0;
+}
+
+.profilePage .headline{
+  padding-top: 150px;
+  text-align: center;
+  font-size: 63px;
+}
+.jumbotron{
+  background-color: unset;
+}
+
+.profilePage{
+  height: 100vh;
+  width: 100vw;
+  background-image: url('img/nightWater.jpeg');
+  background-size: cover;
+  background-position: center;
+  color: azure;
+}
+
+.lightText{
+  color: azure;
+}
+
+.entries{
+
 }

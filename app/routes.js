@@ -11,7 +11,7 @@ module.exports = function(app, passport, db) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('waterApp').find({}).toArray((err, result) => {
+        db.collection('waterApp').find({createdBy: req.user._id}).toArray((err, result) => {
           if (err) return console.log(err)
           console.log('profileWorking',result)
           res.render('profile.ejs', {
@@ -28,7 +28,7 @@ module.exports = function(app, passport, db) {
         db.collection('waterApp')
         .findOneAndUpdate({date: req.body.date, msg: req.body.msg}, {
           $inc: {
-           thumbUp:req.body.thumbUp + 1
+          thumbUp:req.body.thumbUp + 1
           }
         }, {
           sort: {_id: -1},
@@ -47,10 +47,10 @@ module.exports = function(app, passport, db) {
 
 // message board routes ===============================================================
 
-     app.post('/profile', (req, res) => {
-      db.collection('waterApp').save({date: req.body.date, time: req.body.time, amount: req.body.amount}, (err, result) => {
+      app.post('/profile', (req, res) => {
+      db.collection('waterApp').save({date: req.body.date, time: req.body.time, amount: req.body.amount, createdBy: req.user._id}, (err, result) => {
         if (err) return console.log(err)
-         console.log('saved to database')
+        console.log('saved to database')
         res.redirect('/profile')
       })
     })
